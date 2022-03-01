@@ -6,7 +6,9 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import About from "./pages/About";
 import DataProvider from "./providers/DataProvider";
-import Home from "./pages/Home";
+import Links from "./pages/Links";
+import LinkShow from "./pages/LinkShow";
+import LinkForm from "./pages/LinkForm";
 
 
 const NotFound = ()=>{
@@ -18,9 +20,14 @@ ReactDOM.render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />}>
-          <Route path="/about" element={<About />} />
-          <Route path="/home" element={<Home />} />
+          
+          <Route index element={<Links />} />
+          <Route path='/about' element={<About />} />
+          <Route path='/links/:id' element={<LinkShow />} />
+          <Route path='/links/new' element={<LinkForm />} />
+          <Route path='/links/:id/edit'element={<LinkForm />} />
           <Route path="*" element={<NotFound />} />
+          
         </Route>
       </Routes>
     </BrowserRouter>
