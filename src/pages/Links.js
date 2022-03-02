@@ -12,7 +12,7 @@ const Links = () => {
       <button onClick={getLinks}>Get Links</button>
       <button onClick={()=>createLink( {title:'UNICORNS RULE', username:'sharayahh' } )}>Create link</button>
        <button onClick={()=>updateLink( {id:95, title:'UPDATED'} )}>Update Link</button>
-       <button onClick={()=>deleteLink()}>delete link</button>
+       <button onClick={()=>deleteLink(93)}>delete link</button>
     </div>
 )
 }
