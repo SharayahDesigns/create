@@ -2,7 +2,7 @@ import React from "react";
 
 const LinkShow = () => {
   return (
-<h1>Links here</h1>
+<h1>LinkShow here</h1>
 )
 }
 

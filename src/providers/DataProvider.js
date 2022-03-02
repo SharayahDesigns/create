@@ -32,13 +32,13 @@ const DataProvider = (props) => {
    
     try {
       // you are the customer at the resturant 
-      let res = await axios.get(`${baseurl}/api/links`)
+      let res = await axios.get(`${baseurl}/api/links/`)
       console.log(res)
       
       //update UI
       setLinks(res.data)
     } catch(err) {
-      alert('err occured')
+      alert('Get Links err occured')
     }
   }
   
@@ -46,26 +46,64 @@ const DataProvider = (props) => {
   const createLink = async (linkObjFromForm) => {
     try {
       //create to db
-      let res = await axios.post(`${baseurl}/api/links`,linkObjFromForm)
+      let res = await axios.post(`${baseurl}/api/links/`,linkObjFromForm)
       console.log('res:',res)
       
       //update UI
       setLinks([res.data, ...links])
-} catch(err) {
-      alert('error occured')
-    console.log(err.response)
+    } catch(err) {
+      alert('Create err occured')
+      console.log(err.response)
     }
   }
   
   //udpdate link to api/db and update links state in UI
   
+  const updateLink = async (linkObjFromForm) => {
+    if(!linkObjFromForm.id) {
+      alert('no id given will not work')
+      return
+    }
+    
+    try {
+      //update DB
+      let res = await axios.put(`${baseurl}/api/links/${linkObjFromForm.id}`,linkObjFromForm)
+      console.log('res:',res)
+      
+      //update UI
+      let updatedLink = res.data
+      let updateLinks = links.map(link => link.id === updatedLink.id ? updatedLink : link)
+      setLinks(updateLinks)
+    } catch(err) {
+      alert('Update err occured')
+      console.log(err.response)
+    }
+  }
+  
+  
   //delete a link to api/db and update links state in UI
-
+  
+  const deleteLink = async (id) =>{
+    try{
+      //Delete from db
+      let res = await axios.delete(`${baseurl}/api/links/${id}`)
+      console.log(res)
+      
+      // Delete from links state
+      setLinks(links.filter(l => l.id !== id))
+    }catch(err){
+      alert('Delete err occured')
+    }
+  }
+  
   // create an object that will be 'global state'
   const dataProviderThing = {
+    updateLink,
     createLink,
-    links,
     getLinks,
+    links,
+    deleteLink,
+    
     
     
 };
