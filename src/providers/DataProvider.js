@@ -23,7 +23,7 @@ import React, { useState } from "react";
 export const DataContext = React.createContext();
 
 const DataProvider = (props) => {
-  const baseurl = 'https://link-app-sp22.herokuapp.com'
+  const baseurl = ''
   const [links,setLinks] = useState([]);
   
   
