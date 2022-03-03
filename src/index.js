@@ -9,6 +9,7 @@ import DataProvider from "./providers/DataProvider";
 import Links from "./pages/Links";
 import LinkShow from "./pages/LinkShow";
 import LinkForm from "./pages/LinkForm";
+import Foods from "./pages/Foods";
 
 
 const NotFound = ()=>{
@@ -23,6 +24,7 @@ ReactDOM.render(
           
           <Route index element={<Links />} />
           <Route path='/about' element={<About />} />
+          <Route path='/foods' element={<Foods />} />
           <Route path='/links/:id' element={<LinkShow />} />
           <Route path='/links/new' element={<LinkForm />} />
           <Route path='/links/:id/edit'element={<LinkForm />} />

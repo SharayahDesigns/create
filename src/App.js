@@ -11,6 +11,8 @@ function App() {
         >
         <Link to='/'>Links</Link> - {' '}
         <Link to='/about'>About</Link> - {' '}
+        <Link to='/foods'>Foods</Link> - {' '}
+        
         <Link to='/links/new'>New Link</Link> - {' '}
         
         

@@ -1,5 +1,7 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React,{useState} from "react";
+
+
 //MENU
 // createContext HERE this doing a lot for
 // create Context/Provider, get and set out data
@@ -25,6 +27,20 @@ export const DataContext = React.createContext();
 const DataProvider = (props) => {
   const baseurl = ''
   const [links,setLinks] = useState([]);
+  const [foodsDev,setFoodsDev] = useState([]);
+  
+  //get localhost:3001/api/foods => [{id, name, price}]
+  
+  const getFoods = async () => {
+    // grabbing our foods from db
+    try {
+    let response = await axios.get('http://localhost:3000/api/foods')
+      
+      setFoodsDev(response.data)
+  }catch(err) {
+    alert('err')
+  }
+  };
   
   
   //get links from api and update links state in UI
@@ -103,6 +119,8 @@ const DataProvider = (props) => {
     getLinks,
     links,
     deleteLink,
+    getFoods,
+    foodsDev,
     
     
     
