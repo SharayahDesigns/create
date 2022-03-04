@@ -38,9 +38,24 @@ const DataProvider = (props) => {
       
       setFoodsDev(response.data)
   }catch(err) {
-    alert('err')
+      alert('err')
+      
   }
   };
+  
+  const addFood = async (food) => {
+    console.log('food',food)
+    try {
+    let res = await axios.post('http://localhost:3000/api/foods', food)
+    } catch(err) {
+      console.log(err)
+      setFoodsDev([food, ...foodsDev])
+      
+    }
+  
+  }
+  
+  
   
   
   //get links from api and update links state in UI
@@ -121,6 +136,7 @@ const DataProvider = (props) => {
     deleteLink,
     getFoods,
     foodsDev,
+    addFood,
     
     
     
